@@ -4,8 +4,6 @@ import java.util.Stack;
 
 public class DFS extends Search{
 	Stack<Node> stack = new Stack<Node>();
-	int nodesExpanded=0, maxDepth = 0, maxFrontierSize=0;
-	
 	public static void main(String[] args) throws IOException {
 		DFS dfs= new DFS();
 		dfs.readInput();

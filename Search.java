@@ -7,10 +7,12 @@ public class Search {
 
 	protected ArrayList<String> maze = new ArrayList<String>();
 	protected int[][] visited;
-	int mazeRBound = 0;
-	int mazeBBound = 0;
+	int mazeRBound = 0,mazeBBound = 0,goalRow, goalCol;
 	protected int pathCost = 0;
 	Node startNode;
+	protected int nodesExpanded = 0;
+	protected int maxDepth = 0;
+	protected int maxFrontierSize = 0;
 
 	public Search() {
 		super();
@@ -34,7 +36,7 @@ public class Search {
 
 	protected void readInput() throws IOException {
 		int startRow=0, startCol=0;
-		BufferedReader br = new BufferedReader(new FileReader("E:/Fall 2013/AI/Assignments/1/Input/mediumMaze.lay"));
+		BufferedReader br = new BufferedReader(new FileReader("E:/Fall 2013/AI/Assignments/1/Input/bigMaze.lay"));
 		int i=-1;
 		String str;
 		while(((str = br.readLine())!=null)){
@@ -43,6 +45,10 @@ public class Search {
 			if(str.contains("P")){
 				startCol = str.indexOf('P');
 				startRow = i;
+			}
+			if(str.contains(".")){
+				goalCol=str.indexOf('.');
+				goalRow=i;
 			}
 				maze.add(str);
 		}
